@@ -1,0 +1,25 @@
+
+#include <Stepper.h>
+
+// 2048:한바퀴(360도), 1024:반바퀴(180도)...
+const int stepsPerRevolution = 2048;
+// 모터 드라이브에 연결된 핀 IN4, IN2, IN3, IN1
+Stepper myStepper1(stepsPerRevolution,11,9,10,8);
+Stepper myStepper2(stepsPerRevolution,7,5,6,4);
+int cnt = 0;
+
+void setup() {
+myStepper1.setSpeed(15);
+myStepper2.setSpeed(15);
+
+}
+void loop() {
+if(cnt < 7200) {
+
+// 시계 방향으로 한바퀴 회전
+myStepper2.step(-stepsPerRevolution/720);
+myStepper1.step(-stepsPerRevolution/720);
+cnt++;
+}
+delay(0);
+}
